@@ -11,10 +11,9 @@
 1. Przejsć do Mobilem
 2. Wykonać docker compose build
 2. Wykonać docker compose up
-3. Przejść do kontenera z backendem (mobilem-laravel)
-4. Wykonać docker exec -it mobilem-laravel php artisan migrate:fresh
-5. Wykonać docker exec -it mobilem-laravel php artisan storage:link
-6. Powinno działać pod localhost:5173
+3. Wykonać docker exec -it mobilem-laravel php artisan migrate:fresh
+4. Wykonać docker exec -it mobilem-laravel php artisan storage:link
+5. Powinno działać pod localhost:5173
 
 
 Przy zmianie z lokal na docker odkomentować dobry kod a zakomentować zły dotyczący bazy w mobilem/backend/.env
