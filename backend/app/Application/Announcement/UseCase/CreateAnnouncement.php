@@ -30,7 +30,7 @@ class CreateAnnouncement
         );
 
         foreach ($dto->newImages as $uploadedFile) {
-            $path = $uploadedFile->store('announcements', 'public'); // zapis w storage/app/public/announcements
+            $path = $uploadedFile->store('announcements', 'public');
             $announcement->addImage(new Image($path));
         }
 
