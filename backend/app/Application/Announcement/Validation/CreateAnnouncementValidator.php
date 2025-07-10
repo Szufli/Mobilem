@@ -22,7 +22,7 @@ class CreateAnnouncementValidator
             'description' => ['required', 'string', 'max:1000'],
             'price' => ['required', 'numeric'],
             'newImages' => ['nullable', 'array', 'max:5'],
-            'newImages.*' => ['image', 'mimes:jpg,jpeg,png,webp', 'max:2048'], // 2MB per file
+            'newImages.*' => ['image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
         ]);
 
         if ($validator->fails()) {
