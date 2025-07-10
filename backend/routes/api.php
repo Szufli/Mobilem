@@ -9,9 +9,8 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::prefix('announcements')->group(function () {
-    Route::get('/', [AnnouncementController::class, 'index']); // lista
-    Route::post('/', [AnnouncementController::class, 'store']); // tworzenie
-    Route::get('/{id}', [AnnouncementController::class, 'show']); // pobranie pojedynczego
-    Route::put('/{id}', [AnnouncementController::class, 'update']); // aktualizacja
-    Route::delete('/{id}', [AnnouncementController::class, 'destroy']); // usunięcie
+    Route::get('/', [AnnouncementController::class, 'index']); 
+    Route::post('/', [AnnouncementController::class, 'store']); 
+    Route::put('/{id}', [AnnouncementController::class, 'update']); 
+    Route::delete('/{id}', [AnnouncementController::class, 'destroy']); 
 });
