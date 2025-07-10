@@ -43,7 +43,7 @@ class UpdateAnnouncement
             }
         }
 
-        // Dodaj nowe pliki
+
         foreach ($dto->newImages as $file) {
             $path = $file->store('announcements', 'public');
             $announcement->addImage(new Image($path));
