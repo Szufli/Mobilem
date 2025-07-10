@@ -20,12 +20,11 @@ class DeleteAnnouncement
             throw new NotFoundHttpException("Ogłoszenie o ID $id nie zostało znalezione.");
         }
 
-        // Usuń wszystkie pliki powiązane z ogłoszeniem
+
         foreach ($announcement->getImages() as $image) {
             Storage::disk('public')->delete($image->getPath());
         }
-
-        // Usuń ogłoszenie z repozytorium
+        
         $this->repository->delete($id);
     }
 }
