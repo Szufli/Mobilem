@@ -1,0 +1,26 @@
+FROM php:8.2-cli
+
+# Instalujemy potrzebne rozszerzenia i narzędzia (np. zip, pdo_mysql, mbstring)
+RUN apt-get update && apt-get install -y \
+    zip unzip libzip-dev libonig-dev git curl \
+    && docker-php-ext-install pdo pdo_mysql zip mbstring
+
+# Kopiujemy composera z oficjalnego obrazu
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+WORKDIR /var/www/html
+
+# Kopiujemy composer.json i composer.lock
+COPY composer.json composer.lock ./
+COPY . .
+
+# Instalujemy zależności PHP
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+
+# Kopiujemy resztę aplikacji
+
+# Eksponujemy port na którym działa artisan serve (domyślnie 8000)
+EXPOSE 8000
+
+# Komenda startowa - artisan serve na 0.0.0.0:8000
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
